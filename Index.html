@@ -1,0 +1,2543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hydroflow Irrigation - Smart Farming Solutions</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <style>
+    /* ============ CSS Variables ============ */
+    :root {
+      /* Brand Colors - Maintained from original */
+      --bg: #f7faf9;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f8a5f;
+      --accent-dark: #04623f;
+      --glass: rgba(255, 255, 255, 0.7);
+      
+      /* Jumia-inspired additions */
+      --orange: #ff6600;
+      --yellow: #ffd700;
+      --blue: #0d6efd;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+      --success: #28a745;
+      --danger: #dc3545;
+      --warning: #ffc107;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    /* ============ Base Styles ============ */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: #111827;
+      line-height: 1.6;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-secondary {
+      background-color: var(--orange);
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #e55a00;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: var(--accent-dark);
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+    
+    /* ============ Header & Navigation ============ */
+    .header {
+      background-color: var(--card);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-top {
+      background-color: var(--accent-dark);
+      color: white;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+    
+    .header-top .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header-top-links a {
+      margin-left: 20px;
+      transition: opacity 0.3s;
+    }
+    
+    .header-top-links a:hover {
+      opacity: 0.8;
+    }
+    
+    .header-main {
+      padding: 15px 0;
+    }
+    
+    .header-main .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo img {
+      height: 48px;
+    }
+    
+    .logo h1 {
+      font-size: 22px;
+      color: var(--accent);
+      margin: 0;
+    }
+    
+    .search-bar {
+      flex: 1;
+      max-width: 500px;
+      margin: 0 30px;
+      position: relative;
+    }
+    
+    .search-bar input {
+      width: 100%;
+      padding: 12px 20px;
+      border-radius: 30px;
+      border: 1px solid #e2e8f0;
+      font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+    
+    .search-bar input:focus {
+      border-color: var(--accent);
+    }
+    
+    .search-bar button {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .header-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .header-action:hover {
+      color: var(--accent);
+    }
+    
+    .header-action i {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    
+    .cart-icon {
+      position: relative;
+    }
+    
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--orange);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .categories-nav {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .categories-nav .container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .categories-toggle {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: var(--accent-dark);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    .categories-toggle i {
+      margin-right: 10px;
+    }
+    
+    .categories-menu {
+      display: flex;
+      margin-left: 30px;
+    }
+    
+    .categories-menu a {
+      padding: 15px 20px;
+      transition: background-color 0.3s;
+    }
+    
+    .categories-menu a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* ============ Hero Banner ============ */
+    .hero {
+      padding: 40px 0;
+    }
+    
+    .hero-slider {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .hero-slide {
+      position: relative;
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero-content {
+      max-width: 500px;
+      padding: 40px;
+      color: white;
+    }
+    
+    .hero-content h2 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .hero-slider .slick-dots {
+      bottom: 20px;
+    }
+    
+    .hero-slider .slick-dots li button:before {
+      color: white;
+      font-size: 12px;
+    }
+    
+    /* ============ Featured Products ============ */
+    .featured-products {
+      padding: 40px 0;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+    
+    .product-card {
+      background-color: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: var(--orange);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 2;
+    }
+    
+    .product-image {
+      height: 200px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+    }
+    
+    .product-image img {
+      max-height: 100%;
+      transition: transform 0.5s;
+    }
+    
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+    
+    .product-info {
+      padding: 20px;
+    }
+    
+    .product-category {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 16px;
+      height: 40px;
+      overflow: hidden;
+    }
+    
+    .product-rating {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .stars {
+      color: var(--yellow);
+      margin-right: 8px;
+    }
+    
+    .rating-count {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    .product-price {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .current-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    
+    .original-price {
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    
+    .product-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .product-actions .btn {
+      flex: 1;
+      padding: 10px;
+      font-size: 14px;
+    }
+    
+    /* ============ Promotional Banners ============ */
+    .promo-banners {
+      padding: 40px 0;
+    }
+    
+    .banners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+    
+    .promo-banner {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    
+    .promo-banner:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.6), transparent);
+      z-index: 1;
+    }
+    
+    .promo-content {
+      position: relative;
+      z-index: 2;
+      max-width: 60%;
+    }
+    
+    .promo-content h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    /* ============ Footer ============ */
+    .footer {
+      background-color: var(--dark-gray);
+      color: white;
+      padding: 50px 0 20px;
+      margin-top: 50px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: white;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent);
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+    
+    .social-links a:hover {
+      background-color: var(--accent);
+    }
+    
+    .newsletter-form {
+      display: flex;
+      margin-top: 15px;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+    }
+    
+    .newsletter-form button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 0 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      color: #aaa;
+    }
+    
+    /* ============ Product Listing Page ============ */
+    .listing-header {
+      background-color: var(--light-gray);
+      padding: 20px 0;
+      margin-bottom: 30px;
+    }
+    
+    .listing-header h1 {
+      font-size: 28px;
+      color: var(--dark-gray);
+      margin-bottom: 10px;
+    }
+    
+    .breadcrumb {
+      display: flex;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .breadcrumb a {
+      color: var(--accent);
+    }
+    
+    .breadcrumb span {
+      margin: 0 8px;
+    }
+    
+    .listing-container {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    
+    .filters-sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+    
+    .filters-card {
+      background-color: var(--card);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    
+    .filter-title {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--dark-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .filter-clear {
+      font-size: 14px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+    
+    .filter-group {
+      margin-bottom: 20px;
+    }
+    
+    .filter-group h4 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: var(--dark-gray);
+    }
+    
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .filter-option {
+      display: flex;
+      align-items: center;
+    }
+    
+    .filter-option input {
+      margin-right: 10px;
+    }
+    
+    .price-range {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    
+    .price-range span {
+      font-size: 14px;
+    }
+    
+    .listing-results {
+      flex: 1;
+    }
+    
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .results-count {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .sort-select {
+      padding: 8px 15px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      background-color: white;
+    }
+    
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    
+    .pagination ul {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .pagination a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 6px;
+      background-color: var(--card);
+      color: var(--dark-gray);
+      transition: all 0.3s;
+    }
+    
+    .pagination a.active,
+    .pagination a:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    /* ============ Product Detail Page ============ */
+    .product-detail {
+      padding: 40px 0;
+    }
+    
+    .product-detail-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    @media (max-width: 992px) {
+      .product-detail-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .product-images {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .product-main-image {
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    
+    .product-thumbnails {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .product-thumbnail {
+      width: 80px;
+      height: 80px;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border 0.3s;
+    }
+    
+    .product-thumbnail.active {
+      border-color: var(--accent);
+    }
+    
+    .product-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .product-info-detail h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--dark-gray);
+    }
+    
+    .product-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .product-meta span {
+      margin-right: 15px;
+    }
+    
+    .product-price-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .current-price-large {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 15px;
+    }
+    
+    .original-price-large {
+      font-size: 20px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+    
+    .product-description {
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
+    
+    .product-actions-detail {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .product-actions-detail .btn {
+      flex: 1;
+      padding: 15px;
+    }
+    
+    .product-specs {
+      margin-top: 30px;
+    }
+    
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .specs-table tr {
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .specs-table td {
+      padding: 12px 0;
+    }
+    
+    .specs-table td:first-child {
+      font-weight: 600;
+      width: 30%;
+    }
+    
+    .related-products {
+      padding: 40px 0;
+    }
+    
+    /* ============ Shopping Cart Page ============ */
+    .cart-page {
+      padding: 40px 0;
+    }
+    
+    .cart-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+    
+    @media (max-width: 992px) {
+      .cart-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .cart-items {
+      background-color: var(--card);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    
+    .cart-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e2e8f0;
+      font-weight: 600;
+      color: var(--dark-gray);
+    }
+    
+    .cart-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      padding: 20px 0;
+      border-bottom: 1px solid #e2e8f0;
+      align-items: center;
+    }
+    
+    .cart-item-info {
+      display: flex;
+      align-items: center;
+    }
+    
+    .cart-item-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .cart-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .cart-item-category {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    .cart-item-price {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .cart-quantity {
+      display: flex;
+      align-items: center;
+    }
+    
+    .quantity-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid #e2e8f0;
+      background-color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .quantity-input {
+      width: 50px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      padding: 5px;
+      margin: 0 10px;
+      border-radius: 4px;
+    }
+    
+    .cart-item-remove {
+      color: var(--danger);
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .cart-summary {
+      background-color: var(--card);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+    }
+    
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .summary-total {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .cart-actions {
+      margin-top: 20px;
+    }
+    
+    .cart-actions .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    /* ============ Responsive Design ============ */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 20px;
+      }
+    }
+    
+    @media (max-width: 992px) {
+      .header-main .container {
+        flex-wrap: wrap;
+      }
+      
+      .search-bar {
+        order: 3;
+        max-width: 100%;
+        margin: 15px 0 0;
+      }
+      
+      .listing-container {
+        flex-direction: column;
+      }
+      
+      .filters-sidebar {
+        width: 100%;
+      }
+      
+      .categories-menu {
+        display: none;
+      }
+      
+      .categories-toggle {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header-top {
+        display: none;
+      }
+      
+      .hero-content h2 {
+        font-size: 28px;
+      }
+      
+      .hero-content p {
+        font-size: 16px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      
+      .product-detail-container {
+        gap: 20px;
+      }
+      
+      .product-actions-detail {
+        flex-direction: column;
+      }
+      
+      .cart-header,
+      .cart-item {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .cart-item-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .cart-item-image {
+        margin-bottom: 10px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .header-actions {
+        gap: 10px;
+      }
+      
+      .header-action span {
+        display: none;
+      }
+      
+      .logo h1 {
+        font-size: 18px;
+      }
+      
+      .hero-slide {
+        height: 300px;
+      }
+      
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .banners-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .promo-banner {
+        height: 150px;
+        padding: 20px;
+      }
+      
+      .promo-content h3 {
+        font-size: 20px;
+      }
+    }
+    
+    /* ============ Utility Classes ============ */
+    .hidden {
+      display: none !important;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    .mb-0 {
+      margin-bottom: 0;
+    }
+    
+    .mt-30 {
+      margin-top: 30px;
+    }
+    
+    .mb-30 {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div>Feel free to Call us today</div>
+        <div class="header-top-links">
+          <a href="#"><i class="fas fa-map-marker-alt"></i> Lukenya Agrovet, Athi River Along Mombasa Road</a>
+          <a href="#"><i class="fas fa-question-circle"></i> Help Center</a>
+          <a href="#"><i class="fas fa-phone"></i> +254704302723</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="header-main">
+      <div class="container">
+        <div class="logo">
+          <img src="https://i.imghippo.com/files/fxTg6933gaE.png" alt="Hydroflow Irrigation">
+          <h1></h1>
+        </div>
+        
+        <div class="search-bar">
+          <input type="text" placeholder="Search for irrigation products, pipes, fittings...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="header-actions">
+  <a href="Login.html" class="header-action">
+    <i class="fas fa-user"></i>
+    <span>Account</span>
+  </a>
+</div>
+
+          <div class="header-action">
+            <i class="fas fa-heart"></i>
+            <span>Wishlist</span>
+          </div>
+          <a href="cart.html" class="header-action cart-icon" id="openCartBtn">
+  <i class="fas fa-shopping-cart"></i>
+  <span class="cart-count" id="cartCount">0</span>
+  <span>Cart</span>
+</a>
+
+        </div>
+      </div>
+    </div>
+    
+    <nav class="categories-nav">
+      <div class="container">
+        <div class="categories-toggle">
+          <i class="fas fa-bars"></i>
+          <span>All Categories</span>
+        </div>
+        <div class="categories-menu">
+          <a href="index.html">Home</a>
+          <a href="listing.html">HDPE Pipes</a>
+          <a href="listing.html">Fittings & Valves</a>
+          <a href="listing.html">Sprinklers</a>
+          <a href="listing.html">Drip Irrigation</a>
+          <a href="listing.html">Greenhouse Supplies</a>
+          <a href="listing.html">Tools & Accessories</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content - Homepage (Default) -->
+  <main id="main-content">
+    <!-- Hero Banner -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-slider">
+          <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://plus.unsplash.com/premium_photo-1661845609789-635c5e35c4ba?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aXJyaWdhdGlvbnxlbnwwfHwwfHx8MA%3D%3D');">
+            <div class="hero-content">
+              <h2>Smart Irrigation Solutions</h2>
+              <p>High-quality HDPE pipes, fittings, and complete irrigation systems for modern farming.</p>
+              <button class="btn btn-primary">Shop Now</button>
+            </div>
+          </div>
+          <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1743742566156-f1745850281a?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aXJyaWdhdGlvbnxlbnwwfHwwfHx8MA%3D%3D');">
+            <div class="hero-content">
+              <h2>Up to 30% Off on Drip Systems</h2>
+              <p>Save water and increase yield with our efficient drip irrigation systems.</p>
+              <button class="btn btn-secondary">View Deals</button>
+            </div>
+          </div>
+          <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1200&auto=format&fit=crop');">
+            <div class="hero-content">
+              <h2>Greenhouse Farming Essentials</h2>
+              <p>Everything you need for successful greenhouse farming in one place.</p>
+              <button class="btn btn-primary">Explore Products</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+<section class="about-section" style="padding: 60px 0; background-color: var(--bg);">
+  <div class="container">
+
+    <div class="about-header" style="text-align: left; margin-bottom: 40px;">
+      <h2 class="section-title">About Hydroflow Irrigation</h2>
+      <p style="max-width: 700px; margin: 10px auto; color: var(--muted); font-size: 16px;">
+        We are Kenya’s trusted supplier of innovative, affordable, and durable irrigation solutions that empower farmers to grow more with less.
+      </p>
+    </div>
+
+    <div class="about-flex" style="
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    ">
+      
+      <!-- Left Image -->
+      <div class="about-image" style="flex: 1; min-width: 300px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVqdrPuKSg-eJvHK4glxsYkpb7Zjani7lxSQ&s" 
+             alt="About Hydroflow Irrigation" 
+             style="border-radius: 12px; width: 100%; box-shadow: var(--shadow);">
+      </div>
+
+      <!-- Right Text -->
+      <div class="about-text" style="flex: 1; min-width: 300px;">
+        <h3 style="font-size: 22px; color: var(--accent-dark); margin-bottom: 15px;">Who We Are</h3>
+        <p style="margin-bottom: 20px; color: #444;">
+          Hydroflow Irrigation is a leading provider of high-quality irrigation products including HDPE pipes, drip systems, fittings, greenhouse accessories, and modern water-saving solutions.  
+          We help farmers, homeowners, and agribusinesses boost productivity through smart, efficient water management.
+        </p>
+
+        <h3 style="font-size: 22px; color: var(--accent-dark); margin-bottom: 10px;">Our Mission</h3>
+        <p style="margin-bottom: 20px; color: #444;">
+          To deliver reliable, affordable, and innovative irrigation solutions that support sustainable farming across Africa.
+        </p>
+
+        <h3 style="font-size: 22px; color: var(--accent-dark); margin-bottom: 10px;">Our Vision</h3>
+        <p style="margin-bottom: 20px; color: #444;">
+          To become the most trusted brand in smart irrigation technology and empower every farmer with efficient water management tools.
+        </p>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="about-values" style="margin-top: 60px;">
+      <h3 class="section-title">Our Core Values</h3>
+
+      <div style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      ">
+        <div class="value-card" style="
+          background: var(--card);
+          padding: 25px;
+          border-radius: 10px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: 0.3s;
+        ">
+          <i class="fas fa-leaf" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+          <h4>Sustainability</h4>
+          <p style="color: var(--muted);">We promote water-saving technology that protects the environment.</p>
+        </div>
+
+        <div class="value-card" style="
+          background: var(--card);
+          padding: 25px;
+          border-radius: 10px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: 0.3s;
+        ">
+          <i class="fas fa-handshake" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+          <h4>Integrity</h4>
+          <p style="color: var(--muted);">We deliver what we promise quality, honesty, and reliability.</p>
+        </div>
+
+        <div class="value-card" style="
+          background: var(--card);
+          padding: 25px;
+          border-radius: 10px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: 0.3s;
+        ">
+          <i class="fas fa-lightbulb" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+          <h4>Innovation</h4>
+          <p style="color: var(--muted);">We embrace new technologies that help farmers grow more efficiently.</p>
+        </div>
+
+        <div class="value-card" style="
+          background: var(--card);
+          padding: 25px;
+          border-radius: 10px;
+          box-shadow: var(--shadow);
+          text-align: center;
+          transition: 0.3s;
+        ">
+          <i class="fas fa-users" style="font-size: 30px; color: var(--accent); margin-bottom: 15px;"></i>
+          <h4>Customer Focus</h4>
+          <p style="color: var(--muted);">Your success is our success, we offer support every step of the way.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid" id="featuredProducts">
+          <!-- Featured products will be loaded by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Banners -->
+    <section class="promo-banners">
+      <div class="container">
+        <div class="banners-grid">
+          <div class="promo-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZdCSplIxKkuUrIRvcexe6wTE0tfFZ2RgZQ&s');">
+            <div class="promo-content">
+              <h3>Spring Sale</h3>
+              <p>Up to 40% off on selected items</p>
+              <button class="btn btn-outline" style="margin-top: 10px;">Shop Now</button>
+            </div>
+          </div>
+          <div class="promo-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1508857650881-64475119d798?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8');">
+            <div class="promo-content">
+              <h3>New Arrivals</h3>
+              <p>Latest irrigation technology</p>
+              <button class="btn btn-outline" style="margin-top: 10px;">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recently Viewed -->
+    <section class="featured-products">
+      <div class="container">
+        <h2 class="section-title">Recently Viewed</h2>
+        <div class="products-grid" id="recentProducts">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product Detail Page Template (Hidden by default) -->
+  <div id="detail-page" class="hidden">
+    <div class="product-detail">
+      <div class="container">
+        <div class="breadcrumb mb-30">
+          <a href="listing.html">Home</a>
+          <span>></span>
+          <a href="listing.html">HDPE Pipes</a>
+          <span>></span>
+          <span id="detailProductName">HDPE Pipe 32mm PN10</span>
+        </div>
+        
+        <div class="product-detail-container">
+          <div class="product-images">
+            <div class="product-main-image" id="mainImage">
+              <img src="https://via.placeholder.com/600x400?text=HDPE+Pipe+32mm" alt="Product Image" id="mainImageSrc">
+            </div>
+            <div class="product-thumbnails" id="productThumbnails">
+              <!-- Thumbnails will be loaded by JS -->
+            </div>
+          </div>
+          
+          <div class="product-info-detail">
+            <h1 id="detailTitle">HDPE Pipe 32mm PN10 - 100m</h1>
+            <div class="product-meta">
+              <span>Category: <strong id="detailCategory">HDPE Pipes</strong></span>
+              <span>Brand: <strong id="detailBrand">Hydroflow</strong></span>
+              <span>SKU: <strong id="detailSKU">HDPE-32-100</strong></span>
+            </div>
+            
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <div class="rating-count">(24 reviews)</div>
+            </div>
+            
+            <div class="product-price-detail">
+              <div class="current-price-large" id="detailPrice">KES 6,000</div>
+              <div class="original-price-large" id="detailOriginalPrice">KES 7,500</div>
+            </div>
+            
+            <div class="product-description" id="detailDescription">
+              <p>High-density polyethylene (HDPE) pipe with pressure rating PN10. Suitable for irrigation systems, water supply, and other fluid transport applications. Resistant to corrosion, chemicals, and UV radiation. 100-meter roll.</p>
+              <ul>
+                <li>Diameter: 32mm</li>
+                <li>Pressure Rating: PN10 (10 bar)</li>
+                <li>Length: 100 meters</li>
+                <li>Material: High-Density Polyethylene</li>
+                <li>Color: Black with blue stripe</li>
+              </ul>
+            </div>
+            
+            <div class="product-actions-detail">
+              <button class="btn btn-primary" id="addToCartDetail">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary" id="buyNowBtn">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+            </div>
+            
+            <div class="product-specs">
+              <h3 class="section-title mb-0">Specifications</h3>
+              <table class="specs-table">
+                <tbody id="specsTable">
+                  <!-- Specifications -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+        <section class="related-products">
+          <h2 class="section-title">Related Products</h2>
+          <div class="products-grid" id="relatedProducts">
+            
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart Page  -->
+  <div id="cart-page" class="hidden">
+    <div class="cart-page">
+      <div class="container">
+        <h1 class="section-title mb-0">Shopping Cart</h1>
+        <div class="breadcrumb mb-30">
+          <a href="cart.html">Home</a>
+          <span>></span>
+          <span>Shopping Cart</span>
+        </div>
+        
+        <div class="cart-container">
+          <div class="cart-items">
+            <div class="cart-header">
+              <div>Product</div>
+              <div>Price</div>
+              <div>Quantity</div>
+              <div>Subtotal</div>
+            </div>
+            
+            <div id="cartItemsContainer">
+              <!-- Cart items will be loaded by JavaScript -->
+            </div>
+            
+            <div class="cart-actions" style="margin-top: 20px;">
+              <button class="btn btn-outline" onclick="window.location.href='cart.html'">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+              </button>
+              <button class="btn btn-outline" id="clearCartBtn">
+                <i class="fas fa-trash"></i> Clear Cart
+              </button>
+            </div>
+          </div>
+          
+          <div class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="cartSubtotal">KES 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="cartShipping">KES 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax</span>
+              <span id="cartTax">KES 0</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-total">Total</span>
+              <span class="summary-total" id="cartTotal">KES 0</span>
+            </div>
+            
+            <div class="cart-actions">
+              <button class="btn btn-primary" id="checkoutBtn">
+                <i class="fas fa-lock"></i> Proceed to Checkout
+              </button>
+              <button class="btn btn-outline" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i> Back to Home
+              </button>
+            </div>
+            
+            <div style="margin-top: 20px; font-size: 14px; color: var(--muted);">
+              <p><i class="fas fa-shield-alt"></i> Secure checkout</p>
+              <p><i class="fas fa-truck"></i> Free shipping on orders over KES 5,000</p>
+              <p><i class="fas fa-undo"></i> 30-day return policy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Product Listing Page Template (Hidden by default) -->
+  <div id="listing-page" class="hidden">
+    <div class="listing-header">
+      <div class="container">
+        <h1>HDPE Pipes & Fittings</h1>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>></span>
+          <a href="#">Irrigation</a>
+          <span>></span>
+          <span>HDPE Pipes</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container listing-container">
+      <aside class="filters-sidebar">
+        <div class="filters-card">
+          <div class="filter-title">
+            <span>Filters</span>
+            <span class="filter-clear" id="clearFilters">Clear All</span>
+          </div>
+          
+          <div class="filter-group">
+            <h4>Category</h4>
+            <div class="filter-options" id="categoryFilters">
+              <!-- Category filters will be loaded by JS -->
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h4>Price Range</h4>
+            <input type="range" min="0" max="50000" value="50000" class="price-slider" id="priceSlider">
+            <div class="price-range">
+              <span>KES 0</span>
+              <span id="priceMaxDisplay">KES 50,000</span>
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h4>Brand</h4>
+            <div class="filter-options" id="brandFilters">
+              <!-- Brand filters will be loaded by JS -->
+            </div>
+          </div>
+          
+          <div class="filter-group">
+            <h4>Rating</h4>
+            <div class="filter-options" id="ratingFilters">
+              <!-- Rating filters will be loaded by JS -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="filters-card">
+          <h3>Need Help?</h3>
+          <p>Our irrigation experts are ready to assist you with product selection and technical advice.</p>
+          <button class="btn btn-outline" style="width: 100%; margin-top: 15px;">Contact Support</button>
+        </div>
+      </aside>
+      
+      <div class="listing-results">
+        <div class="results-header">
+          <div class="results-count" id="resultsCount">Showing 12 of 48 products</div>
+          <div>
+            <select class="sort-select" id="sortSelect">
+              <option value="default">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+              <option value="newest">Newest Arrivals</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="products-grid" id="listingProducts">
+          <!-- Listing products will be loaded by JavaScript -->
+        </div>
+        
+        <div class="pagination">
+          <ul>
+            <li><a href="#" class="active">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Hydroflow Irrigation</h3>
+          <p>Your trusted partner for smart irrigation solutions. We provide high-quality products for efficient water management in agriculture.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="listing.html">Products</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="contact us.html">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Customer Service</h3>
+          <ul class="footer-links">
+            <li><a href="#">Track Your Order</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Warranty</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Newsletter</h3>
+          <p>Subscribe to get updates on new products and special offers.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </div>
+          <p class="mt-30">Need help? Call us at <strong>+254 704 302 723</strong></p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Hydroflow Irrigation Services. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+ 
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+  <!-- JavaScript Code -->
+  <script>
+    // ============ DATA & CONFIGURATION ============
+    // Sample product data
+    const PRODUCTS = [
+      {
+        id: 1,
+        name: "HDPE Pipe 32mm PN10 - 100m",
+        category: "HDPE Pipes",
+        brand: "Hydroflow",
+        price: 6000,
+        originalPrice: 7500,
+        rating: 4.5,
+        ratingCount: 24,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz9KIspnL2PtcCh8yOFpiPO9y6ZzqP1EWpJw&s",
+        description: "High-density polyethylene pipe with pressure rating PN10. Suitable for irrigation systems.",
+        specs: {
+          "Diameter": "32mm",
+          "Pressure Rating": "PN10 (10 bar)",
+          "Length": "100 meters",
+          "Material": "High-Density Polyethylene",
+          "Color": "Black with blue stripe"
+        },
+        tags: ["pipe", "hdpe", "irrigation"]
+      },
+      {
+        id: 2,
+        name: "HDPE Coupling 20mm",
+        category: "Fittings",
+        brand: "Hydroflow",
+        price: 100,
+        originalPrice: 120,
+        rating: 4.2,
+        ratingCount: 18,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh0lsYWYveOoriYbpaUBS4aa_ja5Pm-1SPNQ&s",
+        description: "HDPE coupling for connecting 20mm pipes.",
+        specs: {
+          "Size": "20mm",
+          "Material": "HDPE",
+          "Type": "Coupling"
+        },
+        tags: ["fitting", "coupling"]
+      },
+      {
+        id: 3,
+        name: "Ball Valve 1\" Double Union",
+        category: "Valves",
+        brand: "IrriTech",
+        price: 1200,
+        originalPrice: 1500,
+        rating: 4.8,
+        ratingCount: 32,
+        image: "https://images-na.ssl-images-amazon.com/images/I/71oBpnI9MCL._UL500_.jpg",
+        description: "Double union ball valve for easy installation and maintenance.",
+        specs: {
+          "Size": "1 inch",
+          "Type": "Ball Valve",
+          "Connection": "Double Union"
+        },
+        tags: ["valve", "ball valve"]
+      },
+      {
+        id: 4,
+        name: "Y-Type Screen Filter 1\"",
+        category: "Filters",
+        brand: "Hydroflow",
+        price: 800,
+        originalPrice: 1000,
+        rating: 4.3,
+        ratingCount: 15,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGhIBbdPpWe1WMN_NeGH-eN6AyFTiY-s8c-A&s",
+        description: "Y-type screen filter for irrigation systems.",
+        specs: {
+          "Size": "1 inch",
+          "Type": "Y-Type Screen Filter",
+          "Material": "Plastic"
+        },
+        tags: ["filter", "screen"]
+      },
+      {
+        id: 5,
+        name: "Sprinkler 1/2\" Complete Set",
+        category: "Sprinklers",
+        brand: "RainMaster",
+        price: 700,
+        originalPrice: 850,
+        rating: 4.6,
+        ratingCount: 28,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4skGQw10Qeznvgl1vRUwNkCicew8yHbexuQ&s",
+        description: "Complete sprinkler set for garden irrigation.",
+        specs: {
+          "Size": "1/2 inch",
+          "Coverage": "10m radius",
+          "Material": "Plastic and brass"
+        },
+        tags: ["sprinkler", "irrigation"]
+      },
+      {
+        id: 6,
+        name: "Drip Irrigation Kit",
+        category: "Drip Irrigation",
+        brand: "Hydroflow",
+        price: 4500,
+        originalPrice: 5500,
+        rating: 4.9,
+        ratingCount: 41,
+        image: "https://aquahubirrigation.co.ke/wp-content/uploads/2022/08/drip-kit-1-1_cleanup.jpg",
+        description: "Complete drip irrigation kit for small to medium gardens.",
+        specs: {
+          "Coverage": "Up to 100m²",
+          "Components": "Tubing, emitters, filters, fittings",
+          "Water Saving": "Up to 60%"
+        },
+        tags: ["drip", "kit", "water-saving"]
+      },
+      {
+        id: 7,
+        name: "Shade Net 70% (4m x 50m)",
+        category: "Greenhouse Supplies",
+        brand: "AgriNet",
+        price: 11000,
+        originalPrice: 13000,
+        rating: 4.4,
+        ratingCount: 22,
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvTYnN24LncYFSTFIPx8bgPP8MawcRx_zl3Q&s",
+        description: "High-quality shade net for greenhouse and crop protection.",
+        specs: {
+          "Shade Percentage": "70%",
+          "Size": "4m x 50m",
+          "Material": "HDPE"
+        },
+        tags: ["shade", "greenhouse", "net"]
+      },
+      {
+        id: 8,
+        name: "Mulching Paper Silver Black (1.2m x 400m)",
+        category: "Greenhouse Supplies",
+        brand: "Hydroflow",
+        price: 18000,
+        originalPrice: 22000,
+        rating: 4.7,
+        ratingCount: 19,
+        image: "https://www.singhalmart.com/cdn/shop/files/51Hpq3-8oGL._SL1500.jpg?v=1737451557&width=1214",
+        description: "Silver black mulching paper for weed control and moisture retention.",
+        specs: {
+          "Width": "1.2 meters",
+          "Length": "400 meters",
+          "Thickness": "30 microns"
+        },
+        tags: ["mulching", "paper", "weed control"]
+      }
+    ];
+
+    // Categories for filters
+    const CATEGORIES = [
+      "HDPE Pipes", "Fittings", "Valves", "Filters", 
+      "Sprinklers", "Drip Irrigation", "Greenhouse Supplies", "Tools & Accessories"
+    ];
+    
+    const BRANDS = ["Hydroflow", "IrriTech", "RainMaster", "AgriNet", "DripEasy", "PipePro"];
+    
+    // ============ UTILITY FUNCTIONS ============
+    function formatKES(amount) {
+      return 'KES ' + amount.toLocaleString('en-KE');
+    }
+    
+    function renderStars(rating) {
+      let stars = '';
+      const fullStars = Math.floor(rating);
+      const halfStar = rating % 1 >= 0.5;
+      
+      for (let i = 0; i < fullStars; i++) {
+        stars += '<i class="fas fa-star"></i>';
+      }
+      
+      if (halfStar) {
+        stars += '<i class="fas fa-star-half-alt"></i>';
+      }
+      
+      const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+      for (let i = 0; i < emptyStars; i++) {
+        stars += '<i class="far fa-star"></i>';
+      }
+      
+      return stars;
+    }
+    
+    // ============ PRODUCT CARD TEMPLATE ============
+    function createProductCard(product) {
+      return `
+        <div class="product-card" data-id="${product.id}" data-category="${product.category}" data-brand="${product.brand}" data-price="${product.price}" data-rating="${product.rating}">
+          ${product.originalPrice > product.price ? '<div class="product-badge">Sale</div>' : ''}
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" loading="lazy">
+          </div>
+          <div class="product-info">
+            <div class="product-category">${product.category}</div>
+            <div class="product-name">${product.name}</div>
+            <div class="product-rating">
+              <div class="stars">${renderStars(product.rating)}</div>
+              <div class="rating-count">(${product.ratingCount})</div>
+            </div>
+            <div class="product-price">
+              <div class="current-price">${formatKES(product.price)}</div>
+              ${product.originalPrice > product.price ? `<div class="original-price">${formatKES(product.originalPrice)}</div>` : ''}
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-primary add-to-cart" data-id="${product.id}">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-outline view-details" data-id="${product.id}">
+                <i class="fas fa-eye"></i> Details
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    
+    // ============ CART MANAGEMENT ============
+    let cart = JSON.parse(localStorage.getItem('hydroflow_cart')) || [];
+    
+    function updateCartCount() {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cartCount').textContent = totalItems;
+    }
+    
+    function addToCart(productId, quantity = 1) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      
+      const existingItem = cart.find(item => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          category: product.category,
+          quantity: quantity
+        });
+      }
+      
+      localStorage.setItem('hydroflow_cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast(`${product.name} added to cart`);
+    }
+    
+    function removeFromCart(productId) {
+      cart = cart.filter(item => item.id !== productId);
+      localStorage.setItem('hydroflow_cart', JSON.stringify(cart));
+      updateCartCount();
+      if (document.getElementById('cart-page').classList.contains('hidden') === false) {
+        renderCartPage();
+      }
+    }
+    
+    function updateCartQuantity(productId, quantity) {
+      const item = cart.find(item => item.id === productId);
+      if (item) {
+        item.quantity = quantity;
+        localStorage.setItem('hydroflow_cart', JSON.stringify(cart));
+        updateCartCount();
+        if (document.getElementById('cart-page').classList.contains('hidden') === false) {
+          renderCartPage();
+        }
+      }
+    }
+    
+    function clearCart() {
+      cart = [];
+      localStorage.setItem('hydroflow_cart', JSON.stringify(cart));
+      updateCartCount();
+      if (document.getElementById('cart-page').classList.contains('hidden') === false) {
+        renderCartPage();
+      }
+      showToast('Cart cleared');
+    }
+    
+    // ============ PAGE RENDERING FUNCTIONS ============
+    function renderHomepage() {
+      // Render featured products (first 6)
+      const featuredContainer = document.getElementById('featuredProducts');
+      if (featuredContainer) {
+        featuredContainer.innerHTML = PRODUCTS.slice(0, 6).map(createProductCard).join('');
+      }
+      
+      // Render recently viewed (last 4)
+      const recentContainer = document.getElementById('recentProducts');
+      if (recentContainer) {
+        recentContainer.innerHTML = PRODUCTS.slice(-4).map(createProductCard).join('');
+      }
+      
+      // Initialize hero slider
+      $('.hero-slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear',
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: false
+      });
+    }
+    
+    function renderListingPage() {
+      // Render category filters
+      const categoryFilters = document.getElementById('categoryFilters');
+      if (categoryFilters) {
+        categoryFilters.innerHTML = CATEGORIES.map(cat => `
+          <label class="filter-option">
+            <input type="checkbox" value="${cat}" class="category-filter">
+            <span>${cat}</span>
+          </label>
+        `).join('');
+      }
+      
+      // Render brand filters
+      const brandFilters = document.getElementById('brandFilters');
+      if (brandFilters) {
+        brandFilters.innerHTML = BRANDS.map(brand => `
+          <label class="filter-option">
+            <input type="checkbox" value="${brand}" class="brand-filter">
+            <span>${brand}</span>
+          </label>
+        `).join('');
+      }
+      
+      // Render rating filters
+      const ratingFilters = document.getElementById('ratingFilters');
+      if (ratingFilters) {
+        ratingFilters.innerHTML = `
+          <label class="filter-option">
+            <input type="checkbox" value="4" class="rating-filter">
+            <span>${renderStars(4)} & above</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" value="3" class="rating-filter">
+            <span>${renderStars(3)} & above</span>
+          </label>
+          <label class="filter-option">
+            <input type="checkbox" value="2" class="rating-filter">
+            <span>${renderStars(2)} & above</span>
+          </label>
+        `;
+      }
+      
+      // Render products
+      renderFilteredProducts();
+      
+      // Set up filter event listeners
+      document.querySelectorAll('.category-filter, .brand-filter, .rating-filter').forEach(filter => {
+        filter.addEventListener('change', renderFilteredProducts);
+      });
+      
+      document.getElementById('priceSlider').addEventListener('input', function() {
+        document.getElementById('priceMaxDisplay').textContent = formatKES(parseInt(this.value));
+        renderFilteredProducts();
+      });
+      
+      document.getElementById('sortSelect').addEventListener('change', renderFilteredProducts);
+      document.getElementById('clearFilters').addEventListener('click', clearFilters);
+    }
+    
+    function renderFilteredProducts() {
+      const container = document.getElementById('listingProducts');
+      if (!container) return;
+      
+      // Get filter values
+      const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
+      const selectedBrands = Array.from(document.querySelectorAll('.brand-filter:checked')).map(cb => cb.value);
+      const selectedRatings = Array.from(document.querySelectorAll('.rating-filter:checked')).map(cb => parseFloat(cb.value));
+      const maxPrice = parseInt(document.getElementById('priceSlider').value);
+      const sortBy = document.getElementById('sortSelect').value;
+      
+      // Filter products
+      let filteredProducts = PRODUCTS.filter(product => {
+        // Category filter
+        if (selectedCategories.length > 0 && !selectedCategories.includes(product.category)) {
+          return false;
+        }
+        
+        // Brand filter
+        if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) {
+          return false;
+        }
+        
+        // Rating filter
+        if (selectedRatings.length > 0 && !selectedRatings.some(r => product.rating >= r)) {
+          return false;
+        }
+        
+        // Price filter
+        if (product.price > maxPrice) {
+          return false;
+        }
+        
+        return true;
+      });
+      
+      // Sort products
+      switch (sortBy) {
+        case 'price-low':
+          filteredProducts.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-high':
+          filteredProducts.sort((a, b) => b.price - a.price);
+          break;
+        case 'rating':
+          filteredProducts.sort((a, b) => b.rating - a.rating);
+          break;
+        case 'newest':
+          filteredProducts.sort((a, b) => b.id - a.id);
+          break;
+      }
+      
+      // Update results count
+      document.getElementById('resultsCount').textContent = `Showing ${filteredProducts.length} of ${PRODUCTS.length} products`;
+      
+      // Render products
+      container.innerHTML = filteredProducts.map(createProductCard).join('');
+      
+      // Reattach event listeners
+      attachProductEventListeners();
+    }
+    
+    function clearFilters() {
+      document.querySelectorAll('.category-filter, .brand-filter, .rating-filter').forEach(cb => {
+        cb.checked = false;
+      });
+      document.getElementById('priceSlider').value = 50000;
+      document.getElementById('priceMaxDisplay').textContent = formatKES(50000);
+      document.getElementById('sortSelect').value = 'default';
+      renderFilteredProducts();
+    }
+    
+    function renderProductDetail(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+      
+      // Update product details
+      document.getElementById('detailTitle').textContent = product.name;
+      document.getElementById('detailProductName').textContent = product.name;
+      document.getElementById('detailCategory').textContent = product.category;
+      document.getElementById('detailBrand').textContent = product.brand;
+      document.getElementById('detailSKU').textContent = `PROD-${product.id}`;
+      document.getElementById('detailPrice').textContent = formatKES(product.price);
+      document.getElementById('detailOriginalPrice').textContent = formatKES(product.originalPrice);
+      document.getElementById('detailDescription').innerHTML = `
+        <p>${product.description}</p>
+        <ul>${Object.entries(product.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>
+      `;
+      
+      // Update main image
+      document.getElementById('mainImageSrc').src = product.image;
+      document.getElementById('mainImageSrc').alt = product.name;
+      
+      // Create thumbnails (in a real app, you'd have multiple images)
+      const thumbnailsContainer = document.getElementById('productThumbnails');
+      thumbnailsContainer.innerHTML = `
+        <div class="product-thumbnail active">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-thumbnail">
+          <img src="https://via.placeholder.com/600x400?text=Product+Image+2" alt="${product.name} - Image 2">
+        </div>
+        <div class="product-thumbnail">
+          <img src="https://via.placeholder.com/600x400?text=Product+Image+3" alt="${product.name} - Image 3">
+        </div>
+      `;
+      
+      // Update specifications table
+      const specsTable = document.getElementById('specsTable');
+      specsTable.innerHTML = Object.entries(product.specs).map(([key, value]) => `
+        <tr>
+          <td>${key}</td>
+          <td>${value}</td>
+        </tr>
+      `).join('');
+      
+      // Render related products (filter by category, exclude current product)
+      const relatedContainer = document.getElementById('relatedProducts');
+      const relatedProducts = PRODUCTS.filter(p => 
+        p.category === product.category && p.id !== product.id
+      ).slice(0, 4);
+      
+      relatedContainer.innerHTML = relatedProducts.map(createProductCard).join('');
+      
+      // Reattach event listeners
+      attachProductEventListeners();
+      
+      // Set up thumbnail click events
+      document.querySelectorAll('.product-thumbnail').forEach((thumb, index) => {
+        thumb.addEventListener('click', function() {
+          document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          
+          // In a real app, you would change the main image to the clicked thumbnail
+          // For this demo, we'll just change the main image source
+          if (index === 0) {
+            document.getElementById('mainImageSrc').src = product.image;
+          } else {
+            document.getElementById('mainImageSrc').src = `https://via.placeholder.com/600x400?text=Product+Image+${index + 1}`;
+          }
+        });
+      });
+    }
+    
+    function renderCartPage() {
+      const container = document.getElementById('cartItemsContainer');
+      if (!container) return;
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px;">
+            <i class="fas fa-shopping-cart" style="font-size: 60px; color: var(--muted); margin-bottom: 20px;"></i>
+            <h3>Your cart is empty</h3>
+            <p>Add some products to your cart to see them here.</p>
+            <button class="btn btn-primary" onclick="showPage('home')">Continue Shopping</button>
+          </div>
+        `;
+        
+        document.getElementById('cartSubtotal').textContent = formatKES(0);
+        document.getElementById('cartShipping').textContent = formatKES(0);
+        document.getElementById('cartTax').textContent = formatKES(0);
+        document.getElementById('cartTotal').textContent = formatKES(0);
+        return;
+      }
+      
+      // Calculate totals
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const shipping = subtotal > 5000 ? 0 : 500;
+      const tax = subtotal * 0.16; // 16% VAT
+      const total = subtotal + shipping + tax;
+      
+      // Update totals
+      document.getElementById('cartSubtotal').textContent = formatKES(subtotal);
+      document.getElementById('cartShipping').textContent = formatKES(shipping);
+      document.getElementById('cartTax').textContent = formatKES(tax);
+      document.getElementById('cartTotal').textContent = formatKES(total);
+      
+      // Render cart items
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item" data-id="${item.id}">
+          <div class="cart-item-info">
+            <div class="cart-item-image">
+              <img src="${item.image}" alt="${item.name}">
+            </div>
+            <div>
+              <div class="cart-item-name">${item.name}</div>
+              <div class="cart-item-category">${item.category}</div>
+            </div>
+          </div>
+          <div class="cart-item-price">${formatKES(item.price)}</div>
+          <div class="cart-quantity">
+            <button class="quantity-btn decrease-qty" data-id="${item.id}">-</button>
+            <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+            <button class="quantity-btn increase-qty" data-id="${item.id}">+</button>
+          </div>
+          <div>
+            <div class="cart-item-subtotal">${formatKES(item.price * item.quantity)}</div>
+            <div class="cart-item-remove" data-id="${item.id}">Remove</div>
+          </div>
+        </div>
+      `).join('');
+      
+      // Attach cart event listeners
+      document.querySelectorAll('.decrease-qty').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id);
+          const item = cart.find(item => item.id === productId);
+          if (item && item.quantity > 1) {
+            updateCartQuantity(productId, item.quantity - 1);
+          }
+        });
+      });
+      
+      document.querySelectorAll('.increase-qty').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id);
+          const item = cart.find(item => item.id === productId);
+          if (item) {
+            updateCartQuantity(productId, item.quantity + 1);
+          }
+        });
+      });
+      
+      document.querySelectorAll('.quantity-input').forEach(input => {
+        input.addEventListener('change', function() {
+          const productId = parseInt(this.dataset.id);
+          const quantity = Math.max(1, parseInt(this.value) || 1);
+          updateCartQuantity(productId, quantity);
+        });
+      });
+      
+      document.querySelectorAll('.cart-item-remove').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id);
+          removeFromCart(productId);
+        });
+      });
+    }
+    
+    // ============ PAGE NAVIGATION ============
+    function showPage(page) {
+      // Hide all pages
+      document.getElementById('main-content').classList.add('hidden');
+      document.getElementById('listing-page').classList.add('hidden');
+      document.getElementById('detail-page').classList.add('hidden');
+      document.getElementById('cart-page').classList.add('hidden');
+      
+      // Show requested page
+      switch(page) {
+        case 'home':
+          document.getElementById('main-content').classList.remove('hidden');
+          renderHomepage();
+          break;
+        case 'listing':
+          document.getElementById('listing-page').classList.remove('hidden');
+          renderListingPage();
+          break;
+        case 'detail':
+          document.getElementById('detail-page').classList.remove('hidden');
+          break;
+        case 'cart':
+          document.getElementById('cart-page').classList.remove('hidden');
+          renderCartPage();
+          break;
+      }
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+    
+    // ============ EVENT LISTENERS ============
+    function attachProductEventListeners() {
+      // Add to cart buttons
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id);
+          addToCart(productId);
+        });
+      });
+      
+      // View details buttons
+      document.querySelectorAll('.view-details').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id);
+          renderProductDetail(productId);
+          showPage('detail');
+        });
+      });
+      
+      // Buy now button on detail page
+      const buyNowBtn = document.getElementById('buyNowBtn');
+      if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', function() {
+          const productId = parseInt(document.querySelector('#addToCartDetail').dataset.id || '1');
+          addToCart(productId, 1);
+          showPage('cart');
+        });
+      }
+      
+      // Add to cart button on detail page
+      const addToCartDetail = document.getElementById('addToCartDetail');
+      if (addToCartDetail) {
+        addToCartDetail.addEventListener('click', function() {
+          const productId = parseInt(this.dataset.id || '1');
+          addToCart(productId, 1);
+        });
+      }
+    }
+    
+    function setupEventListeners() {
+      // Navigation links
+      document.querySelectorAll('a[href="index.html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPage('home');
+        });
+      });
+      
+      document.querySelectorAll('a[href="listing.html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPage('listing');
+        });
+      });
+      
+      // Cart icon
+      document.getElementById('openCartBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage('cart');
+      });
+      
+      // Checkout button
+      document.getElementById('checkoutBtn')?.addEventListener('click', function() {
+        if (cart.length === 0) {
+          alert('Your cart is empty. Add some products before checkout.');
+          return;
+        }
+        
+        const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        alert(`Checkout functionality would be implemented here.\nTotal: ${formatKES(total)}\n\nIn a real application, this would redirect to a payment gateway.`);
+      });
+      
+      // Clear cart button
+      document.getElementById('clearCartBtn')?.addEventListener('click', clearCart);
+      
+      // Search form
+      document.querySelector('.search-bar button').addEventListener('click', function() {
+        const query = document.querySelector('.search-bar input').value;
+        if (query.trim()) {
+          alert(`Search functionality would show results for: "${query}"`);
+          showPage('listing');
+        }
+      });
+      
+      document.querySelector('.search-bar input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          const query = this.value;
+          if (query.trim()) {
+            alert(`Search functionality would show results for: "${query}"`);
+            showPage('listing');
+          }
+        }
+      });
+      
+      // Newsletter form
+      document.querySelector('.newsletter-form button').addEventListener('click', function() {
+        const email = document.querySelector('.newsletter-form input').value;
+        if (email && email.includes('@')) {
+          alert(`Thank you for subscribing with: ${email}`);
+          document.querySelector('.newsletter-form input').value = '';
+        } else {
+          alert('Please enter a valid email address.');
+        }
+      });
+    }
+    
+    // ============ TOAST NOTIFICATION ============
+    function showToast(message) {
+      // Create toast if it doesn't exist
+      let toast = document.querySelector('.toast-notification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        document.body.appendChild(toast);
+        
+        // Style the toast
+        Object.assign(toast.style, {
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          backgroundColor: 'var(--accent)',
+          color: 'white',
+          padding: '12px 20px',
+          borderRadius: '6px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+          zIndex: '9999',
+          transform: 'translateY(100px)',
+          opacity: '0',
+          transition: 'transform 0.3s, opacity 0.3s'
+        });
+      }
+      
+      // Set message and show
+      toast.textContent = message;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      
+      // Hide after 3 seconds
+      setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+      }, 3000);
+    }
+    
+    // ============ INITIALIZATION ============
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize cart count
+      updateCartCount();
+      
+      // Render homepage by default
+      renderHomepage();
+      
+      // Set up event listeners
+      setupEventListeners();
+      attachProductEventListeners();
+      
+      // Set dataset for detail page buttons
+      const addToCartDetail = document.getElementById('addToCartDetail');
+      if (addToCartDetail) {
+        addToCartDetail.dataset.id = 1; // Default to first product
+      }
+      
+      const buyNowBtn = document.getElementById('buyNowBtn');
+      if (buyNowBtn) {
+        buyNowBtn.dataset.id = 1; // Default to first product
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,866 @@
+<!-- Contact Us Section -->
+<section class="contact-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">Get in touch with our irrigation experts for consultation, support, and inquiries</p>
+    </div>
+    
+    <div class="contact-container">
+      <!-- Contact Information Cards -->
+      <div class="contact-info">
+        <div class="contact-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3 style="color: var(--accent-dark);">Phone & WhatsApp</h3>
+            <p style="color: var(--muted);">Call or WhatsApp us for immediate assistance</p>
+            <div class="contact-numbers">
+              <a href="tel:+254700000000" class="contact-link" style="background: rgba(15, 138, 95, 0.05); color: var(--accent-dark);">
+                <i class="fab fa-whatsapp" style="color: var(--accent);"></i>
+                <span>+254 700 000 000</span>
+              </a>
+              <a href="tel:+254711000000" class="contact-link" style="background: rgba(15, 138, 95, 0.05); color: var(--accent-dark);">
+                <i class="fas fa-phone" style="color: var(--accent);"></i>
+                <span>+254 711 000 000</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <h3 style="color: var(--accent-dark);">Email Address</h3>
+            <p style="color: var(--muted);">Send us an email for detailed inquiries</p>
+            <div class="contact-emails">
+              <a href="mailto:sales@hydroflow.co.ke" class="contact-link" style="background: rgba(15, 138, 95, 0.05); color: var(--accent-dark);">
+                <i class="fas fa-shopping-cart" style="color: var(--accent);"></i>
+                <span>sales@hydroflow.co.ke</span>
+              </a>
+              <a href="mailto:support@hydroflow.co.ke" class="contact-link" style="background: rgba(15, 138, 95, 0.05); color: var(--accent-dark);">
+                <i class="fas fa-headset" style="color: var(--accent);"></i>
+                <span>support@hydroflow.co.ke</span>
+              </a>
+              <a href="mailto:info@hydroflow.co.ke" class="contact-link" style="background: rgba(15, 138, 95, 0.05); color: var(--accent-dark);">
+                <i class="fas fa-info-circle" style="color: var(--accent);"></i>
+                <span>info@hydroflow.co.ke</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3 style="color: var(--accent-dark);">Visit Our Store</h3>
+            <p style="color: var(--muted);">Come see our products in person</p>
+            <div class="contact-address">
+              <i class="fas fa-building" style="color: var(--accent);"></i>
+              <span style="color: var(--dark-gray);">Hydroflow Irrigation Services</span>
+            </div>
+            <div class="contact-address">
+              <i class="fas fa-road" style="color: var(--accent);"></i>
+              <span style="color: var(--dark-gray);">Industrial Area, Nairobi, Kenya</span>
+            </div>
+            <div class="contact-address">
+              <i class="fas fa-clock" style="color: var(--accent);"></i>
+              <span style="color: var(--dark-gray);">Mon - Sat: 8:00 AM - 6:00 PM</span>
+            </div>
+            <button class="btn btn-outline get-directions" style="border-color: var(--accent); color: var(--accent);">
+              <i class="fas fa-directions" style="color: var(--accent);"></i> Get Directions
+            </button>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <div class="contact-icon" style="background: linear-gradient(135deg, var(--accent), var(--accent-dark));">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div class="contact-details">
+            <h3 style="color: var(--accent-dark);">Live Chat</h3>
+            <p style="color: var(--muted);">Chat with our support team in real-time</p>
+            <button class="btn btn-primary start-chat" style="background: var(--accent); color: white;">
+              <i class="fas fa-comment-dots"></i> Start Live Chat
+            </button>
+            <div class="chat-availability">
+              <div class="availability-indicator available" style="background-color: var(--accent);"></div>
+              <span style="color: var(--muted);">Available Now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="contact-form-container" style="background: var(--card);">
+        <div class="form-header">
+          <h3 style="color: var(--accent-dark);">Send Us a Message</h3>
+          <p style="color: var(--muted);">Fill out the form below and we'll get back to you within 24 hours</p>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+          <div id="formMessage" class="form-message"></div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName" style="color: var(--accent-dark);">
+                <i class="fas fa-user" style="color: var(--accent);"></i> Full Name *
+              </label>
+              <input type="text" id="contactName" class="form-control" placeholder="John Doe" required style="border-color: #e2e8f0;">
+            </div>
+            
+            <div class="form-group">
+              <label for="contactPhone" style="color: var(--accent-dark);">
+                <i class="fas fa-phone" style="color: var(--accent);"></i> Phone Number *
+              </label>
+              <input type="tel" id="contactPhone" class="form-control" placeholder="+254 700 000 000" required style="border-color: #e2e8f0;">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="contactEmail" style="color: var(--accent-dark);">
+              <i class="fas fa-envelope" style="color: var(--accent);"></i> Email Address *
+            </label>
+            <input type="email" id="contactEmail" class="form-control" placeholder="your@email.com" required style="border-color: #e2e8f0;">
+          </div>
+          
+          <div class="form-group">
+            <label for="contactSubject" style="color: var(--accent-dark);">
+              <i class="fas fa-tag" style="color: var(--accent);"></i> Subject
+            </label>
+            <select id="contactSubject" class="form-control" style="border-color: #e2e8f0;">
+              <option value="">Select a subject</option>
+              <option value="product-inquiry">Product Inquiry</option>
+              <option value="technical-support">Technical Support</option>
+              <option value="quotation">Request Quotation</option>
+              <option value="installation">Installation Services</option>
+              <option value="wholesale">Wholesale/Bulk Orders</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="contactMessage" style="color: var(--accent-dark);">
+              <i class="fas fa-edit" style="color: var(--accent);"></i> Your Message *
+            </label>
+            <textarea id="contactMessage" class="form-control" rows="6" placeholder="Tell us about your irrigation project or ask your question..." required style="border-color: #e2e8f0;"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <div class="file-upload">
+              <label for="contactAttachment" style="color: var(--accent-dark);">
+                <i class="fas fa-paperclip" style="color: var(--accent);"></i> Attach Files (Optional)
+              </label>
+              <input type="file" id="contactAttachment" class="file-input" multiple style="border-color: #e2e8f0;">
+              <div class="file-preview" id="filePreview"></div>
+            </div>
+          </div>
+          
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="newsletterOptin">
+            <label for="newsletterOptin" style="color: var(--muted);">
+              Subscribe to our newsletter for updates and special offers
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary submit-btn" style="background: var(--accent); color: white;">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          
+          <div class="form-note">
+            <i class="fas fa-shield-alt" style="color: var(--accent);"></i>
+            <span style="color: var(--muted);">Your information is secure and will never be shared with third parties</span>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Map Section -->
+    <div class="map-section">
+      <h3 class="section-subtitle" style="color: var(--accent-dark);">Our Location</h3>
+      <div class="map-container" style="background: linear-gradient(135deg, rgba(15, 138, 95, 0.1), rgba(4, 98, 63, 0.05));">
+        <div class="map-placeholder">
+          <i class="fas fa-map-marked-alt" style="color: var(--accent);"></i>
+          <h4 style="color: var(--accent-dark);">Nairobi Store Location</h4>
+          <p style="color: var(--muted);">Industrial Area, Nairobi, Kenya</p>
+          <button class="btn btn-outline" onclick="openGoogleMaps()" style="border-color: var(--accent); color: var(--accent);">
+            <i class="fab fa-google" style="color: var(--accent);"></i> Open in Google Maps
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h3 class="section-subtitle" style="color: var(--accent-dark);">Frequently Asked Questions</h3>
+      <div class="faq-grid">
+        <div class="faq-item" style="background: var(--card); border-color: #e2e8f0;">
+          <div class="faq-question" style="color: var(--accent-dark);">
+            <span>What are your business hours?</span>
+            <i class="fas fa-chevron-down" style="color: var(--accent);"></i>
+          </div>
+          <div class="faq-answer">
+            <p style="color: var(--muted);">We're open Monday to Saturday from 8:00 AM to 6:00 PM. Closed on Sundays and public holidays.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" style="background: var(--card); border-color: #e2e8f0;">
+          <div class="faq-question" style="color: var(--accent-dark);">
+            <span>Do you offer installation services?</span>
+            <i class="fas fa-chevron-down" style="color: var(--accent);"></i>
+          </div>
+          <div class="faq-answer">
+            <p style="color: var(--muted);">Yes! We provide professional installation services for all irrigation systems. Contact us for a free site survey and quotation.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" style="background: var(--card); border-color: #e2e8f0;">
+          <div class="faq-question" style="color: var(--accent-dark);">
+            <span>What is your delivery time?</span>
+            <i class="fas fa-chevron-down" style="color: var(--accent);"></i>
+          </div>
+          <div class="faq-answer">
+            <p style="color: var(--muted);">Delivery within Nairobi takes 1-2 business days. Other locations: 3-5 business days. Express delivery is available.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item" style="background: var(--card); border-color: #e2e8f0;">
+          <div class="faq-question" style="color: var(--accent-dark);">
+            <span>Do you offer bulk discounts?</span>
+            <i class="fas fa-chevron-down" style="color: var(--accent);"></i>
+          </div>
+          <div class="faq-answer">
+            <p style="color: var(--muted);">Yes, we offer special pricing for wholesale and bulk orders. Contact our sales team for customized quotations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Contact Section Styles - Using Your Brand Colors */
+:root {
+    --accent: #0f8a5f;
+    --accent-dark: #04623f;
+    --bg: #f7faf9;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --dark-gray: #111827;
+    --light-gray: #f8f9fa;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.contact-section {
+  padding: 60px 0;
+  background: var(--bg);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 36px;
+  color: var(--accent-dark);
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Contact Container */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact Info Cards */
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+}
+
+.contact-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(15, 138, 95, 0.2);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-details h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.contact-details p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.contact-numbers,
+.contact-emails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  transform: translateX(5px);
+}
+
+.contact-link i {
+  font-size: 18px;
+  width: 24px;
+}
+
+.contact-address {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.contact-address i {
+  width: 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.chat-availability {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.availability-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Contact Form */
+.contact-form-container {
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+
+.form-header {
+  margin-bottom: 30px;
+}
+
+.form-header h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-message {
+  padding: 15px;
+  border-radius: 8px;
+  display: none;
+  margin-bottom: 15px;
+}
+
+.form-message.success {
+  background-color: rgba(15, 138, 95, 0.1);
+  color: var(--accent);
+  border-left: 4px solid var(--accent);
+  display: block;
+}
+
+.form-message.error {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+  border-left: 4px solid #dc3545;
+  display: block;
+}
+
+.form-message.info {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  border-left: 4px solid #0d6efd;
+  display: block;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(15, 138, 95, 0.1);
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%230f8a5f' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.file-upload {
+  margin-top: 10px;
+}
+
+.file-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #e2e8f0;
+  border-radius: 8px;
+  background: var(--light-gray);
+  cursor: pointer;
+}
+
+.file-input:hover {
+  border-color: var(--accent);
+}
+
+.file-preview {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--light-gray);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.file-item i {
+  color: var(--accent);
+}
+
+.remove-file {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group input {
+  width: 18px;
+  height: 18px;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.submit-btn {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.form-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+/* Map Section */
+.map-section {
+  margin: 60px 0;
+}
+
+.map-container {
+  height: 300px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.map-placeholder {
+  text-align: center;
+  padding: 40px;
+}
+
+.map-placeholder i {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.map-placeholder h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.map-placeholder p {
+  margin-bottom: 20px;
+}
+
+/* FAQ Section */
+.faq-section {
+  margin-top: 60px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.faq-question {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(15, 138, 95, 0.05);
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-answer.active {
+  padding: 0 20px 20px;
+  max-height: 200px;
+}
+
+.faq-answer p {
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .section-subtitle {
+    font-size: 16px;
+  }
+  
+  .contact-card {
+    padding: 20px;
+  }
+  
+  .contact-form-container {
+    padding: 25px;
+  }
+  
+  .map-placeholder {
+    padding: 20px;
+  }
+  
+  .map-placeholder i {
+    font-size: 40px;
+  }
+}
+</style>
+
+<script>
+// Contact Form Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const formMessage = document.getElementById('formMessage');
+  const fileInput = document.getElementById('contactAttachment');
+  const filePreview = document.getElementById('filePreview');
+  
+  // File upload preview
+  if (fileInput) {
+    fileInput.addEventListener('change', function() {
+      filePreview.innerHTML = '';
+      const files = Array.from(this.files);
+      
+      files.forEach(file => {
+        if (file.size > 5 * 1024 * 1024) {
+          showFormMessage('File size too large. Maximum size is 5MB.', 'error');
+          return;
+        }
+        
+        const fileElement = document.createElement('div');
+        fileElement.className = 'file-item';
+        fileElement.innerHTML = `
+          <i class="fas fa-file"></i>
+          <span>${file.name} (${(file.size / 1024).toFixed(1)}KB)</span>
+          <button type="button" class="remove-file">&times;</button>
+        `;
+        
+        filePreview.appendChild(fileElement);
+        
+        fileElement.querySelector('.remove-file').addEventListener('click', function() {
+          fileElement.remove();
+          const dt = new DataTransfer();
+          const filesArray = Array.from(fileInput.files);
+          const index = filesArray.indexOf(file);
+          if (index > -1) {
+            filesArray.splice(index, 1);
+          }
+          filesArray.forEach(f => dt.items.add(f));
+          fileInput.files = dt.files;
+        });
+      });
+    });
+  }
+  
+  // FAQ Accordion
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const isActive = answer.classList.contains('active');
+      
+      document.querySelectorAll('.faq-answer').forEach(ans => {
+        ans.classList.remove('active');
+        ans.previousElementSibling.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        answer.classList.add('active');
+        this.classList.add('active');
+      }
+    });
+  });
+  
+  // Live Chat button
+  const startChatBtn = document.querySelector('.start-chat');
+  if (startChatBtn) {
+    startChatBtn.addEventListener('click', function() {
+      showFormMessage('Live chat feature would be implemented here. For now, please call or WhatsApp us for immediate assistance.', 'info');
+    });
+  }
+  
+  // Get Directions button
+  const getDirectionsBtn = document.querySelector('.get-directions');
+  if (getDirectionsBtn) {
+    getDirectionsBtn.addEventListener('click', function() {
+      openGoogleMaps();
+    });
+  }
+  
+  // Form submission
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('contactName').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      
+      if (!name || !phone || !email || !message) {
+        showFormMessage('Please fill in all required fields marked with *', 'error');
+        return;
+      }
+      
+      if (!validateEmail(email)) {
+        showFormMessage('Please enter a valid email address', 'error');
+        return;
+      }
+      
+      const submitBtn = this.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        showFormMessage('Thank you! Your message has been sent successfully. We will get back to you within 24 hours.', 'success');
+        contactForm.reset();
+        filePreview.innerHTML = '';
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+      }, 2000);
+    });
+  }
+  
+  // Helper functions
+  function showFormMessage(message, type) {
+    formMessage.textContent = message;
+    formMessage.className = `form-message ${type}`;
+    
+    setTimeout(() => {
+      formMessage.style.display = 'none';
+    }, 5000);
+  }
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  function openGoogleMaps() {
+    const address = "Hydroflow+Irrigation+Services+Industrial+Area+Nairobi+Kenya";
+    window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+  }
+});
+</script>
